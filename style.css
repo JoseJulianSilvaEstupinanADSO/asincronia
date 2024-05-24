@@ -1,0 +1,13 @@
+body{
+    background-color: rgb(194, 194, 194);
+}
+.lista{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.list-group-item{
+    text-align: center;
+    width: 200px;
+    margin: 5px;
+}
