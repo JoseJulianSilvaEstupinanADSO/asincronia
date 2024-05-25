@@ -9,16 +9,16 @@
 async function usuario() {
     let response = await fetch("../json/users.json"); 
     let user = await response.json(); 
-    let usuarios = user.users
-    console.log(user)
-    usuarios.forEach(async element => {
-        let github = await fetch(`https://api.github.com/users/${element.name}/repos`);
+    let usuarios = user.users.filter(aprendiz => aprendiz.aprendiz === true)
+    console.log(usuarios)
+    await usuarios.forEach(async element => {
+        let github = await fetch(`https://api.github.com/users/${element.user}/repos`);
         let usergit = await github.json();
-        let avatar = await usergit.owner
-        if (element.aprendiz === true) {
-            let x = [element.name,avatar[0].avatar_url]
-            console.log(x)
-        }
+        for (let i = 0; i < 1; i++) {
+            const element = usergit[i];
+            let x = [element.full_name, element.owner.avatar_url]
+            console.table(x)
+        }    
     });
 
 }
